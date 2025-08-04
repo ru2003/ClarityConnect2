@@ -4,6 +4,8 @@ package com.clarityconnect.backend.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "users")
@@ -23,6 +25,13 @@ public class User {
     private String password;
 
     private String role;
+
+    @Column(name = "otp")
+    private String otp;
+
+    @Column(name = "otp_expiry")
+    private LocalDateTime otpExpiry;
+
 
     // Getters & Setters
 }
