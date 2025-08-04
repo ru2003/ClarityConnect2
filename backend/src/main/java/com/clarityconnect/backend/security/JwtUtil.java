@@ -14,10 +14,10 @@ public class JwtUtil {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll() // allows signup, login, forgot-password, reset-password
                         .anyRequest().authenticated()
                 );
+
         return http.build();
     }
 }
-

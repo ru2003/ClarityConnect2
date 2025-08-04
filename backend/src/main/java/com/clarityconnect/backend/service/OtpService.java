@@ -24,10 +24,13 @@ public class OtpService {
 
         String otp = String.valueOf(new Random().nextInt(900000) + 100000);
         user.setOtp(otp);
-        user.setOtpExpiry(LocalDateTime.now().plusMinutes(5));
+        user.setOtpExpiry(LocalDateTime.now().plusMinutes(5)); // expires in 5 mins
+
         userRepository.save(user);
+
         emailService.sendOtpEmail(email, otp);
     }
+
 
     public void resetPassword(String email, String otp, String newPassword) {
         User user = userRepository.findByEmail(email)
